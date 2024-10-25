@@ -1,0 +1,49 @@
+.footer {
+    /* position: fixed;
+    bottom: 0; */
+    width: 100%;
+    z-index: 1000;
+    padding-bottom: 20px; /* Отступ от низа экрана */
+}
+
+.footer .row {
+    height: 100%; /* Убедитесь, что строка занимает всю высоту контейнера */
+}
+
+.footer .col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Разместить содержимое по вертикали */
+    height: 100%; /* Убедитесь, что колонка занимает всю высоту строки */
+}
+
+.contact-button {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px;
+}
+
+.footer-copyright {
+    font-size: 0.8rem; /* Уменьшить шрифт */
+    line-height: 1.5; /* Увеличить межстрочный интервал для лучшей читаемости */
+    margin-top: 20px;
+}
+
+.footer-copyright div {
+    display: block; /* Каждая фраза на новой строке */
+}
+
+.footer-contacts a,
+.footer-contacts span {
+    display: block; /* Каждый элемент на новой строке */
+    margin-bottom: 5px; /* Отступ между элементами */
+}
+
+.footer-contacts {
+    margin-left: auto;
+}
+
+.nav-item {
+    cursor: pointer;
+}

@@ -1,0 +1,29 @@
+.main-content {
+    margin-top: -40px;
+}
+
+.banner {
+    position: relative;
+}
+
+.banner-header {
+    position: absolute;
+    z-index: 5;
+    right: 7vw;
+    top: 3vw;
+    height: 17vh;
+    width: 30vw;
+    margin-top: 3vw;
+    font-weight: bold;
+    font-size: 2.5vw;
+    line-height: 10vw;
+    text-align: center;
+    color: #FFFFFF;
+    background: linear-gradient(270deg, rgba(161, 179, 191, 0.8) 72.59%, rgba(161, 179, 191, 0) 98.05%);
+}
+
+.page-content {
+    max-width: 1300px; /* Установите максимальную ширину */
+    margin: 0 auto; /* Центрирование по горизонтали */
+    padding: 20px; /* Внутренние отступы для визуального комфорта */
+}

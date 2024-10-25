@@ -1,0 +1,14 @@
+.navbar-nav li {
+    font-size: 1.5em;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}

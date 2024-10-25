@@ -1,0 +1,68 @@
+const CONTACTS = [
+    {
+      title: 'Генеральный директор',
+      firstName: 'Гребцов',
+      lastName: 'Павел Владимирович',
+      email: 'info@grenso.ru',
+      phone: '+7-495-740-57-30',
+      image: '/photo/Grebtsov.jpg',
+    },
+    {
+      title: 'Заместитель генарального директора по реализации',
+      firstName: 'Гатауллин',
+      lastName: 'Александр Ирикович',
+      email: 'agataullin@grenso.ru',
+      phone: '+7-916-504-44-94',
+      image: '/photo/Gataullin.png',
+    },
+    {
+      title: 'Заместитель генарального директора по работе с клиентами',
+      firstName: 'Гусева',
+      lastName: 'Ирина Владиславовна',
+      email: 'iguseva@grenso.ru',
+      phone: '+7-925-598-83-23',
+      image: '/photo/Guseva.png',
+    },
+    {
+      title: 'Директор департамента договорной деятельности',
+      firstName: 'Степанов',
+      lastName: 'Андрей Сергеевич',
+      email: 'astepanov@grenso.ru',
+      phone: '+7-985-250-72-31',
+      image: '/photo/Stepanov.png',
+    },
+    {
+      title: 'Директор департамента деятельности по управлению спросом',
+      firstName: 'Холодилина',
+      lastName: 'Елена Анатольевна',
+      email: 'eholodilina@grenso.ru',
+      phone: '+7-926-445-33-11',
+      image: '/photo/Holodilina.png',
+    },
+    {
+      title: 'Начальник отдела реализации',
+      firstName: 'Попова',
+      lastName: 'Анастасия Александровна',
+      email: 'apopova@grenso.ru',
+      phone: '+7-926-240-81-76',
+      image: '/photo/Popova.png',
+    },
+    {
+      title: 'Руководитель проектов',
+      firstName: 'Самусева',
+      lastName: 'Наталья Михайловна',
+      email: 'nsamuseva@grenso.ru',
+      phone: '+7-903-984-65-50',
+      image: '/photo/Samuseva.png',
+    },
+    {
+      title: 'Начальник отдела сопроводжения деятельности',
+      firstName: 'Соловей',
+      lastName: 'Павел Владимирович',
+      email: 'psolovey@grenso.ru',
+      phone: '+7-905-600-16-16',
+      image: '/photo/Solovey.png',
+    },
+  ]
+
+  export default CONTACTS

@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.error {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+font-family: 'Roboto', sans-serif;
+text-align: center;
+background-color: #f0f4f8; // Светлый фон для контраста
+
+.message {
+    max-width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+
+    h1 {
+     font-size: 30vh; // 30% от высоты экрана
+     color: #007bff; // Синий цвет для номера ошибки
+     margin: 0;
+    }
+
+    p {
+     font-size: 1.5rem;
+     color: #333;
+    }
+
+    .sub {
+     margin-top: 20px;
+
+     a {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1.5rem;
+        color: #ffffff;
+        background-color: #5bc0de; // Светло-синий цвет для овала
+        border-radius: 50px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+
+        &:hover {
+         background-color: #31b0d5; // Темнее при наведении
+        }
+     }
+    }
+}
+}
+
+// Адаптивность для смартфонов
+@media (max-width: 320px) {
+.message {
+    max-width: 90%;
+    
+    h1 {
+     font-size: 20vh; // Уменьшение размера для маленьких экранов
+    }
+
+    p, .sub a {
+     font-size: 1rem;
+    }
+}
+}
+
+// Ограничение ширины на больших экранах
+@media (min-width: 1200px) {
+.message {
+    max-width: 50%;
+}
+}
