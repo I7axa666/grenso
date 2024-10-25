@@ -20,7 +20,7 @@ function Header() {
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div className="container">
                 <Link to="/" className="navbar-brand">
-                    <img className="img-logo" src="/img/grenso-logo.png" alt="Grenso" width="250"/>    
+                    <img className="img-logo" src={`${import.meta.env.VITE_API_BASE_PATH}/img/grenso-logo.png`} alt="Grenso" width="250"/>    
                 </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                     aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
