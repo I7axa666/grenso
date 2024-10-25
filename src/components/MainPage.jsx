@@ -8,7 +8,7 @@ function MainPage() {
                 <div className="row">
                     <div className="col">
                         <div className="banner">
-                            <img src="/img/banner.jpg" className="img-fluid" alt="К разгрузке готовы!" />
+                            <img src={`${import.meta.env.VITE_API_BASE_PATH}/img/banner.jpg`} className="img-fluid" alt="К разгрузке готовы!" />
                         </div>
                         <h2 className="banner-header">К разгрузке готовы!</h2>
                     </div>

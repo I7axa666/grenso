@@ -5,7 +5,7 @@ const CONTACTS = [
       lastName: 'Павел Владимирович',
       email: 'info@grenso.ru',
       phone: '+7-495-740-57-30',
-      image: '/photo/Grebtsov.jpg',
+      image: `${import.meta.env.VITE_API_BASE_PATH}/photo/Grebtsov.jpg`,
     },
     {
       title: 'Заместитель генарального директора по реализации',
@@ -13,7 +13,7 @@ const CONTACTS = [
       lastName: 'Александр Ирикович',
       email: 'agataullin@grenso.ru',
       phone: '+7-916-504-44-94',
-      image: '/photo/Gataullin.png',
+      image: `${import.meta.env.VITE_API_BASE_PATH}/photo/Gataullin.png`,
     },
     {
       title: 'Заместитель генарального директора по работе с клиентами',
@@ -21,7 +21,7 @@ const CONTACTS = [
       lastName: 'Ирина Владиславовна',
       email: 'iguseva@grenso.ru',
       phone: '+7-925-598-83-23',
-      image: '/photo/Guseva.png',
+      image: `${import.meta.env.VITE_API_BASE_PATH}/photo/Guseva.png`,
     },
     {
       title: 'Директор департамента договорной деятельности',
@@ -29,7 +29,7 @@ const CONTACTS = [
       lastName: 'Андрей Сергеевич',
       email: 'astepanov@grenso.ru',
       phone: '+7-985-250-72-31',
-      image: '/photo/Stepanov.png',
+      image: `${import.meta.env.VITE_API_BASE_PATH}/photo/Stepanov.png`,
     },
     {
       title: 'Директор департамента деятельности по управлению спросом',
@@ -37,7 +37,7 @@ const CONTACTS = [
       lastName: 'Елена Анатольевна',
       email: 'eholodilina@grenso.ru',
       phone: '+7-926-445-33-11',
-      image: '/photo/Holodilina.png',
+      image: `${import.meta.env.VITE_API_BASE_PATH}/photo/Holodilina.png`,
     },
     {
       title: 'Начальник отдела реализации',
@@ -45,7 +45,7 @@ const CONTACTS = [
       lastName: 'Анастасия Александровна',
       email: 'apopova@grenso.ru',
       phone: '+7-926-240-81-76',
-      image: '/photo/Popova.png',
+      image: `${import.meta.env.VITE_API_BASE_PATH}/photo/Popova.png`,
     },
     {
       title: 'Руководитель проектов',
@@ -53,7 +53,7 @@ const CONTACTS = [
       lastName: 'Наталья Михайловна',
       email: 'nsamuseva@grenso.ru',
       phone: '+7-903-984-65-50',
-      image: '/photo/Samuseva.png',
+      image: `${import.meta.env.VITE_API_BASE_PATH}/photo/Samuseva.png`,
     },
     {
       title: 'Начальник отдела сопроводжения деятельности',
@@ -61,7 +61,7 @@ const CONTACTS = [
       lastName: 'Павел Владимирович',
       email: 'psolovey@grenso.ru',
       phone: '+7-905-600-16-16',
-      image: '/photo/Solovey.png',
+      image: `${import.meta.env.VITE_API_BASE_PATH}/photo/Solovey.png`,
     },
   ]
 
