@@ -9,7 +9,7 @@ const Page404 = ()  =>  {
             <h1>404</h1>
             <p> Простите, страница не найдена!</p>
             <div className="sub">
-              <p><Link to={import.meta.env.VITE_API_BASE_URL}>Вернуться на главную</Link></p>
+              <p><Link to="/">Вернуться на главную</Link></p>
             </div>
 		      </div>
         </section>

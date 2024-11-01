@@ -8,6 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../css/style.scss';
 import ContactList from './Contacts.jsx';
+import InfographicMapPage from './InfographicMapPage.jsx';
+import HomePage from './HomePage.jsx'
 
 const router = createBrowserRouter(
   [
@@ -16,6 +18,10 @@ const router = createBrowserRouter(
        element: <App />,
        errorElement: <Page404 />,
        children: [
+        {
+          path: "/",
+          element: <HomePage />,
+        },
         {
           path: "/about.html",
           element: <About />,

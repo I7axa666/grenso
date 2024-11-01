@@ -1,0 +1,43 @@
+.diagonal-infographics {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+  }
+  
+  .infographic-item {
+    margin-bottom: 20px;
+    position: absolute;
+  }
+  
+  .map-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .map-image {
+    width: 100%;
+    height: auto;
+    border: 2px solid #616161;
+  }
+  
+  .map-region {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(26, 35, 126, 0.8); /* Dark blue fill */
+    border: 1px dotted #616161;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .map-region.not-filled {
+    background-color: rgba(176, 190, 197, 0.8); /* Gray fill */
+  }
+  
+  .energy-icon {
+    font-size: 1.2em;
+    margin-left: 5px;
+  }
