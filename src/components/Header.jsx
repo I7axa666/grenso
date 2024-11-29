@@ -37,8 +37,8 @@ function Header() {
                         <li className={`nav-item ms-auto ${activePath === '/contacts.html' ? 'active' : ''}`}>
                             <Link className="nav-link" to="/contacts.html" onClick={() => handleClick('/contacts.html')}>Наша команда</Link>
                         </li>
-                        <li className={`nav-item ms-auto ${activePath === '/catalog.html' ? 'active' : ''}`}>
-                            <Link className="nav-link" to="/catalog.html" onClick={() => handleClick('/catalog.html')}>Калькулятор</Link>
+                        <li className={`nav-item ms-auto ${activePath === '/info-center.html' ? 'active' : ''}`}>
+                            <Link className="nav-link" to="/info-center.html" onClick={() => handleClick('/info-center.html')}>Инфо-центр</Link>
                         </li>
                     </ul>
                 </div>

@@ -21,7 +21,7 @@ const Footer = () => {
                         <h5>Информация</h5>
                         <ul className="nav flex-column">
                             <li className="nav-item"><a onClick={() => handleClick('/about.html')} className="nav-link">О компании</a></li>
-                            <li className="nav-item"><a onClick={() => handleClick('/catalog.html')} className="nav-link">Калькулятор</a></li>
+                            <li className="nav-item"><a onClick={() => handleClick('/info-center.html')} className="nav-link">Инфо-центр</a></li>
                             <li className="nav-item"><a onClick={() => handleClick('/contacts.html')} className="nav-link">Контакты</a></li>
                         </ul>
                     </section>

@@ -2,9 +2,9 @@ import '../css/HomePage.css';
 
 // Image imports (replace these paths with the actual images)
 import cityscapeImage from '/img/city.webp';
-import costReductionIcon from '/img/sign.webp';
-import carbonReductionIcon from '/img/city.webp';
-import energySavingIcon from '/img/city.webp';
+import costReductionIcon from '/img/bearish.png';
+import carbonReductionIcon from '/img/financial-growth.png';
+import energySavingIcon from '/img/company--v1.png';
 
 const HomePage = () => {
 return (
@@ -23,29 +23,28 @@ return (
         <section className="about-section text-center py-5">
          <h2>Кто мы?</h2>
          <p className="about-description">
-            Мы являемся агрегатором, специализирующимся на управлении спросом на электроэнергию, и помогаем потребителям с потреблением более 100 кВт активно участвовать в разгрузке.
-            Наша технология автоматизации позволяет легко объединяться в группы по разгрузке, снижая затраты и выбросы.
+            <b>АО "ГРЭНСО" –</b> агрегатор энергетических решений. Являемся субъектом оптового рынка электрической энергии. Входим в структуру Концерна Росэнергоатом.
          </p>
         </section>
 
         {/* Key Benefits Section */}
         <section className="benefits-section text-center py-5 bg-light">
-         <h2 className="mb-5">Зачем все это?</h2>
+         <h2 className="mb-5">Какие плюсы?</h2>
          <div className="row justify-content-center">
             <div className="col-md-3 benefit">
              <img src={costReductionIcon} alt="Cost Reduction" className="benefit-icon" />
-             <h3>Сократите расходы</h3>
-             <p>Снижение затрат на электроэнергию до 15% для участвующих потребителей.</p>
+             <h3>Почему важно снижать потребление</h3>
+             <p>Снижение потребления в пиковые часы нагрузки позволяет не использовать дорогую и менее эффективную генерацию, тем самым снижая цены на электроэнергию и выбросы СО₂ в атмосферу</p>
             </div>
             <div className="col-md-3 benefit">
              <img src={carbonReductionIcon} alt="Carbon Emissions Reduction" className="benefit-icon" />
-             <h3>Снижение выбросов углекислого газа</h3>
-             <p>Вклад в экологизацию планеты за счет снижения общего углеродного следа.</p>
+             <h3>Максимизация доходов клиента</h3>
+             <p>В 2023 году наша команда помогла заработать нашим партнерам более 200 млн. руб</p>
             </div>
             <div className="col-md-3 benefit">
              <img src={energySavingIcon} alt="Energy Savings" className="benefit-icon" />
-             <h3>Энергоэффективность</h3>
-             <p>Эффективное управление спросом на электроэнергию для достижения максимальной экономии энергии.</p>
+             <h3>Снижение рисков во время сотрудничества</h3>
+             <p>Наши специалисты предложат оптимальный вариант вашего участия в управлении спросом на электроэнергию</p>
             </div>
          </div>
         </section>
