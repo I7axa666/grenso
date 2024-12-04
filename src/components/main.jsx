@@ -10,6 +10,7 @@ import '../css/style.scss';
 import ContactList from './Contacts.jsx';
 import InfographicMapPage from './InfographicMapPage.jsx';
 import HomePage from './HomePage.jsx'
+import InfoCenterTabs from './InfoCenter/InfoCenterTabs.jsx';
 
 const router = createBrowserRouter(
   [
@@ -29,6 +30,10 @@ const router = createBrowserRouter(
         {
           path: "/contacts.html",
           element: <ContactList />,
+        },
+        {
+          path: "/info-center.html",
+          element: <InfoCenterTabs />,
         },
        ],
       },
