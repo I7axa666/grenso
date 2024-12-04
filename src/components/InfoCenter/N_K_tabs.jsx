@@ -17,27 +17,33 @@ const N_K_Tabs = () => {
     }
   };
 
-    useEffect(() => {
+  useEffect(() => {
     loadData();
-    }, []);
+  }, []);
 
   if (!data) {
     return <div>Loading...</div>;
   }
 
+  const { result } = data;
+
   return (
     <div className="table-container">
+      <button onClick={loadData} className="refresh-button">
+        Refresh Data
+      </button>
+      {error && <div className="error">{error}</div>}
+
+      <div className="summary">
+        <p>Max Effect: {result?.max_effect}</p>
+        <p>Best N: {result?.best_N}</p>
+        <p>Best K: {result?.best_K}</p>
+        <p>Average for N: {result?.average_for_N}</p>
+        <p>Target Date: {new Date(result?.target_date).toLocaleDateString()}</p>
+      </div>
+
       <table className="scrollable-table">
-        <button onClick={loadData}>Обновить данные</button>
-        {error && <div className="error">{error}</div>}
         <thead>
-          <div className="summary">
-             <p>Max Effect: {data.result.max_effect}</p>
-             <p>Best N: {data.result.best_N}</p>
-             <p>Best K: {data.result.best_K}</p>
-             <p>Average for N: {data.result.average_for_N}</p>
-             <p>Target Date: {new Date(data.result.target_date).toLocaleDateString()}</p>
-          </div>
           <tr>
             <th>Date</th>
             <th>Occurrence of the Event</th>
@@ -48,14 +54,14 @@ const N_K_Tabs = () => {
           </tr>
         </thead>
         <tbody>
-          {data.result.days.map((day, idx) => (
+          {result?.days.map((day, idx) => (
             <tr key={idx}>
               <td>{new Date(day.target_date).toLocaleDateString()}</td>
-              <td>{row.dr_type}</td>
-              <td>{row.prev_workday_count}</td>
-              <td>{row.k_dr_effect_avg}</td>
-              <td>{row.dr_effect_avg}</td>
-              <td>{row.dr_effect_total}</td>
+              <td>{day.dr_type}</td>
+              <td>{day.prev_workday_count}</td>
+              <td>{day.k_dr_effect_avg}</td>
+              <td>{day.dr_effect_avg}</td>
+              <td>{day.dr_effect_total}</td>
             </tr>
           ))}
         </tbody>
