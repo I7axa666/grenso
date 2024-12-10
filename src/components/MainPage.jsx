@@ -27,7 +27,7 @@ function MainPage() {
         <img src={cityscapeImage} alt="Cityscape Background" className="hero-background" />
         <div className="hero-content position-absolute">
             <h1 className="hero-title">Расширение возможностей потребителей в управлении спросом на электроэнергию</h1>
-            <p className="hero-subtitle">Присоединяйтесь к нашей сети и сокращайте расходы на электроэнергию, внося свой вклад в устойчивое будущее.</p>
+            <p className="hero-subtitle">Присоединяйтесь к нам и сокращайте расходы на электроэнергию, внося свой вклад в устойчивое будущее.</p>
         </div>
     </section>
         <div className="page-content">

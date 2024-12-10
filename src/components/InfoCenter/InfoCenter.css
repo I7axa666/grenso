@@ -1,4 +1,7 @@
 .table-container {
+  display: flex;
+  flex-direction: column;
+  
   margin-top: 20px;
   padding: 16px; /* Adds padding inside the container */
   border: 1px solid #ddd; /* Optional: Adds a border for better visual distinction */
@@ -25,12 +28,14 @@
 
 .error {
   color: red;
-  margin-bottom: 10px;
+  
+  margin-top: 0px;
+
 }
 
 .summary {
-  display: flex; /* Turns the summary content into a horizontal layout */
-  justify-content: space-between; /* Adds spacing between the items */
+  margin-left: auto;
+  margin-right: auto;
   align-items: center; /* Vertically aligns the items */
   margin-bottom: 20px; /* Adds space between the summary and the table */
   padding: 8px 12px;
@@ -47,7 +52,8 @@
 }
 
 .scrollable-table {
-  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   border-collapse: collapse;
   overflow-x: auto; /* Allows horizontal scrolling if needed */
 }
@@ -69,4 +75,70 @@
 
 .scrollable-table tbody tr:hover {
   background-color: #f1f1f1; /* Highlight rows on hover */
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-between; /* Centers the tabs horizontally */
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.gradient-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.gradient-table td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.table-container {
+  max-height: 400px; /* Adjust based on your layout */
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.column-header {
+  text-align: center; /* Horizontally centers the text inside the header cell */
+  vertical-align: middle; /* Vertically centers the text inside the cell */
+  padding: 8px; /* Maintains spacing within the cell */
+  background-color: #f2f2f2; /* Keeps the header background consistent */
+  height: 50px; /* Optional: Ensures consistent header height */
+  white-space: nowrap; /* Prevents wrapping of content */
+}
+
+.inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Добавляет отступы между элементами */
+}
+  
+.input-group {
+flex: 1 1 calc(25% - 16px); /* Четыре элемента в строке с учетом отступов */
+min-width: 200px; /* Минимальная ширина для предотвращения слишком маленьких элементов */
+align-items: center;
+flex-wrap: nowrap;
+max-width: 30%;
+}
+
+.form-label {
+  font-weight: bold; 
+  padding-right: 10px;
+}
+
+.inputs .form-select {
+  width: 50%;
+}
+
+.inputs .form-control {
+  width: 50%;
+}
+
+.spinner-grow {
+  align-self: center;
 }

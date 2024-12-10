@@ -10,13 +10,13 @@ const InfoCenterTabs = () => {
     <div className="info-center">
       <div className="tabs">
         <button
-          className={`tab ${activeTab === 'hAndK' ? 'active' : ''}`}
+          className={`tab ${activeTab === 'hAndK' ? 'btn btn-primary' : 'btn btn-secondary'} `}
           onClick={() => setActiveTab('hAndK')}
         >
           Расчет параметров N и K 
         </button>
         <button
-          className={`tab ${activeTab === 'financialResult' ? 'active' : ''}`}
+          className={`tab ${activeTab === 'financialResult' ? 'btn btn-primary' : 'btn btn-secondary'} `}
           onClick={() => setActiveTab('financialResult')}
         >
           Предварительный расчет финансового результата
