@@ -1,3 +1,3 @@
-## Сыллка GH-Pages
+## Сыллка звернутый проект
 
-https://i7axa666.github.io/grenso/
+https://solo-develop.ru/grenso/
