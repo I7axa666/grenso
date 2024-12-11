@@ -37,4 +37,27 @@ data.forEach(item => {
 return Array.from(columnKeys);
 };
 
-export { findMinMaxValues, getAllColumnKeys };
+const getCellColor = (value, min, max) => {
+   if (typeof value !== 'number') return 'transparent'; // Пропускаем нечисловые значения
+
+   // Цвет для значения 0
+   if (value === 0) return 'rgb(225, 255, 255)'; // Светло-бежевый
+
+   const ratio = (value - min) / (max - min);
+
+   if (value < 0) {
+       // Градация от светло-бежевого до красного для отрицательных значений
+       const red = Math.round(245 + (1 - ratio) * (255 - 245));
+       const green = Math.round(225 - ratio * 245);
+       const blue = Math.round(220 - ratio * 220);
+       return `rgb(${red}, ${green}, ${blue})`;
+   } else {
+       // Градация от светло-бежевого до зеленого для положительных значений
+       const red = Math.round(245 - ratio * 245);
+       const green = Math.round(225 + ratio * (255 - 245));
+       const blue = Math.round(220 - ratio * 220);
+       return `rgb(${red}, ${green}, ${blue})`;
+   }
+};
+
+export { findMinMaxValues, getAllColumnKeys, getCellColor };

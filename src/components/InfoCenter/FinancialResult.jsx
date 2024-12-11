@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { fetchData } from "../../js/apiService";
-import { findMinMaxValues, getAllColumnKeys } from "../../js/utilits";
+import { findMinMaxValues, getAllColumnKeys, getCellColor } from "../../js/utilits";
 import "./InfoCenter.css";
 
 const FinancialResult = () => {
@@ -43,14 +43,6 @@ const FinancialResult = () => {
         }
     };
 
-    const getCellColor = (value, min, max) => {
-        if (typeof value !== 'number') return 'transparent'; // Пропускаем нечисловые значения
-        const ratio = (value - min) / (max - min);
-        const red = Math.round(255 - ratio * 255);
-        const green = Math.round(ratio * 255);
-        return `rgb(${red}, ${green}, 0)`;
-    };
-
     const renderTable = () => {
         if (!Array.isArray(tableData) || !tableData.length) return null;
         const columnKeys = getAllColumnKeys(tableData);
@@ -75,7 +67,10 @@ const FinancialResult = () => {
                             <td className="row-header">{rowKey}</td>
                             {columnKeys.map((colKey, colIndex) => {
                             const cellValue = values.find(obj => obj[colKey] !== undefined)?.[colKey];
-                            const displayValue = cellValue === undefined ? '-' : cellValue;
+                            const displayValue = cellValue === undefined ? '-' : cellValue.toLocaleString(undefined, {
+                                minimumFractionDigits: 0,
+                                maximumFractionDigits: 0,
+                            });
                             return (
                                 <td
                                 key={colIndex}
