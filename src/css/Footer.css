@@ -47,3 +47,7 @@
 .nav-item {
     cursor: pointer;
 }
+
+.custom-icon-size {
+    font-size: 1.2em;
+}
