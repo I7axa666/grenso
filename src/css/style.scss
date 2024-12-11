@@ -1,1 +1,13 @@
 @import 'normalize.css';
+
+.page-content {
+  max-width: 1300px; /* Set max width for the page */
+  margin: 0 auto; /* Center the content horizontally */
+  padding: 20px; /* Padding for comfortable spacing */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}

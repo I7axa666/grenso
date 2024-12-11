@@ -9,6 +9,16 @@
 .header {
     position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it's always on top */
+    background-color: white; /* Optional: Add a background to cover content while scrolling */
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
     width: 100%;
     z-index: 1000;
-}
+    background-color: #fff; /* Optional: to ensure navbar has a background color */
+  }

@@ -8,38 +8,45 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../css/style.scss';
 import ContactList from './Contacts.jsx';
-import InfographicMapPage from './InfographicMapPage.jsx';
 import HomePage from './HomePage.jsx'
 import InfoCenterTabs from './InfoCenter/InfoCenterTabs.jsx';
+import DefaultLayout from './DefaultLayout.jsx';
+import InfoCenterLayout from './InfoCenterLayout.jsx';
 
 const router = createBrowserRouter(
-  [
+    [  
       {
-       path: "/",
-       element: <App />,
-       errorElement: <Page404 />,
-       children: [
-        {
-          path: "/",
-          element: <HomePage />,
-        },
-        {
-          path: "/about.html",
-          element: <About />,
-        },
-        {
-          path: "/contacts.html",
-          element: <ContactList />,
-        },
-        {
-          path: "/info-center.html",
-          element: <InfoCenterTabs />,
-        },
-       ],
+        path: "/",
+        element: <DefaultLayout />,
+        errorElement: <Page404 />,
+        children: [
+          {
+            path: "/",
+            element: <HomePage />,
+          },
+          {
+            path: "/about.html",
+            element: <About />,
+          },
+          {
+            path: "/contacts.html",
+            element: <ContactList />,
+          },
+        ],
       },
       {
-       path: "*",
-       element: <Page404 />,
+        path: "/info-center.html",
+        element: <InfoCenterLayout />, // Use the InfoCenterLayout for this route
+        children: [
+          {
+            index: true,
+            element: <InfoCenterTabs />,
+          },
+        ],
+      },
+      {
+        path: "*",
+        element: <Page404 />,
       },
   ],
   {

@@ -2,14 +2,13 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    overflow: hidden; /* Скрываем прокрутку для всего контейнера */
+    /* overflow: hidden; Скрываем прокрутку для всего контейнера */
 }
 
 /* Контейнер для содержимого с прокруткой */
 .content-container {
-    flex: 1;
-    overflow-y: auto; /* Добавляем вертикальную прокрутку */
-    padding-top: 60px; /* Учитываем высоту Header, если он фиксирован */
-    padding-bottom: 80px; /* Учитываем высоту Footer */
+    flex: 1; /* Allow this section to grow and fill available space */
+    overflow-y: auto; /* Vertical scrolling for content */
+    padding-top: 70px; /* Avoid overlap with fixed header, adjust as needed */
+    padding-bottom: 80px; /* Space for the footer, adjust as needed */
 }
-

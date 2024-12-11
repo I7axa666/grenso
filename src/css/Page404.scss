@@ -7,7 +7,7 @@ align-items: center;
 height: 100vh;
 font-family: 'Roboto', sans-serif;
 text-align: center;
-background-color: #f0f4f8; // Светлый фон для контраста
+background-color: #f0f4f8; 
 
 .message {
     max-width: 50%;
@@ -15,8 +15,8 @@ background-color: #f0f4f8; // Светлый фон для контраста
     box-sizing: border-box;
 
     h1 {
-     font-size: 30vh; // 30% от высоты экрана
-     color: #007bff; // Синий цвет для номера ошибки
+     font-size: 30vh; 
+     color: #007bff; 
      margin: 0;
     }
 
@@ -33,26 +33,26 @@ background-color: #f0f4f8; // Светлый фон для контраста
         padding: 10px 20px;
         font-size: 1.5rem;
         color: #ffffff;
-        background-color: #5bc0de; // Светло-синий цвет для овала
+        background-color: #5bc0de; 
         border-radius: 50px;
         text-decoration: none;
         transition: background-color 0.3s;
 
         &:hover {
-         background-color: #31b0d5; // Темнее при наведении
+         background-color: #31b0d5; 
         }
      }
     }
 }
 }
 
-// Адаптивность для смартфонов
+
 @media (max-width: 320px) {
 .message {
     max-width: 90%;
     
     h1 {
-     font-size: 20vh; // Уменьшение размера для маленьких экранов
+     font-size: 20vh;
     }
 
     p, .sub a {
@@ -61,7 +61,7 @@ background-color: #f0f4f8; // Светлый фон для контраста
 }
 }
 
-// Ограничение ширины на больших экранах
+
 @media (min-width: 1200px) {
 .message {
     max-width: 50%;

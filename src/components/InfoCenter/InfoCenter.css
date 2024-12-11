@@ -1,19 +1,31 @@
+/* Container for InfoCenter content */
+.info-center-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Ensure the container grows to fill available space */
+  padding-top: 70px; /* Avoid overlap with fixed header, adjust based on your header height */
+  padding-bottom: 80px; /* Space for footer, adjust as needed */
+  /* overflow-y: auto;  */
+}
+
+/* Table container */
 .table-container {
   display: flex;
   flex-direction: column;
-  
-  margin-top: 20px;
+  margin-top: 20px; /* Adds space from the top */
+  margin-bottom: 80px; /* Space to prevent overlap with the footer */
   padding: 16px; /* Adds padding inside the container */
   border: 1px solid #ddd; /* Optional: Adds a border for better visual distinction */
   border-radius: 8px; /* Optional: Rounded corners */
   background-color: #fff;
-  overflow: auto; /* Ensures the table stays within the container */
-  max-width: 100%; /* Ensures the table does not extend beyond the container */
+  /* overflow: auto;  */
+  /* max-width: 100%;  */
 }
 
+/* Button styling */
 .refresh-button {
   margin-bottom: 10px;
-  margin-right: 10px; /* Adds a gap between buttons */
+  margin-right: 10px;
   padding: 8px 12px;
   background-color: #007bff;
   color: white;
@@ -26,43 +38,46 @@
   background-color: #0056b3;
 }
 
+/* Error styling */
 .error {
   color: red;
-  
   margin-top: 0px;
-
 }
 
+/* Summary box styling */
 .summary {
   margin-left: auto;
   margin-right: auto;
-  align-items: center; /* Vertically aligns the items */
-  margin-bottom: 20px; /* Adds space between the summary and the table */
+  align-items: center;
+  margin-bottom: 20px;
   padding: 8px 12px;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
+  z-index: 2; /* Ensure summary is above the scrollable table */
 }
 
 .summary p {
   margin: 0;
-  padding: 0 10px; /* Adds spacing between individual items */
-  white-space: nowrap; /* Prevents text wrapping */
+  padding: 0 10px;
+  white-space: nowrap;
 }
 
+/* Table styles */
 .scrollable-table {
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
-  overflow-x: auto; /* Allows horizontal scrolling if needed */
+  overflow-x: auto; /* Horizontal scrolling if necessary */
+  overflow-y: auto; /* Vertical scrolling enabled */
+  max-height: 400px; /* Set a max-height to enable scrolling */
 }
 
-.scrollable-table th,
-.scrollable-table td {
+.scrollable-table th, .scrollable-table td {
   border: 1px solid #ddd;
   padding: 8px;
-  text-align: left; /* Aligns content to the left */
+  text-align: left;
 }
 
 .scrollable-table th {
@@ -70,22 +85,24 @@
 }
 
 .scrollable-table tbody tr:nth-child(even) {
-  background-color: #f9f9f9; /* Adds alternating row colors for better readability */
+  background-color: #f9f9f9;
 }
 
 .scrollable-table tbody tr:hover {
-  background-color: #f1f1f1; /* Highlight rows on hover */
+  background-color: #f1f1f1;
 }
 
+/* Tabs */
 .tabs {
   display: flex;
-  justify-content: space-between; /* Centers the tabs horizontally */
+  justify-content: space-between;
   width: 50%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
 }
 
+/* Gradient table */
 .gradient-table {
   width: 100%;
   border-collapse: collapse;
@@ -97,37 +114,47 @@
   border: 1px solid #ddd;
 }
 
+/* Styling for specific table containers with scroll */
 .table-container {
-  max-height: 400px; /* Adjust based on your layout */
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
   margin-top: 20px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow: hidden; /* Ensure no content overflows outside the container */
+  max-width: 100%;
+  position: relative;
 }
 
+/* Column header styling */
 .column-header {
-  text-align: center; /* Horizontally centers the text inside the header cell */
-  vertical-align: middle; /* Vertically centers the text inside the cell */
-  padding: 8px; /* Maintains spacing within the cell */
-  background-color: #f2f2f2; /* Keeps the header background consistent */
-  height: 50px; /* Optional: Ensures consistent header height */
-  white-space: nowrap; /* Prevents wrapping of content */
+  text-align: center;
+  vertical-align: middle;
+  padding: 8px;
+  background-color: #f2f2f2;
+  height: 50px;
+  white-space: nowrap;
 }
 
+/* Form input styling */
 .inputs {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px; /* Добавляет отступы между элементами */
+  gap: 16px;
 }
-  
+
 .input-group {
-flex: 1 1 calc(25% - 16px); /* Четыре элемента в строке с учетом отступов */
-min-width: 200px; /* Минимальная ширина для предотвращения слишком маленьких элементов */
-align-items: center;
-flex-wrap: nowrap;
-max-width: 30%;
+  flex: 1 1 calc(25% - 16px);
+  min-width: 200px;
+  align-items: center;
+  flex-wrap: nowrap;
+  max-width: 30%;
 }
 
 .form-label {
-  font-weight: bold; 
+  font-weight: bold;
   padding-right: 10px;
 }
 
@@ -139,6 +166,65 @@ max-width: 30%;
   width: 50%;
 }
 
+/* Spinner */
 .spinner-grow {
   align-self: center;
+}
+
+.info-center {
+  padding-top: 80px; /* Adjust this based on your header's height */
+  padding-bottom: 60px; /* Space for the footer */
+  flex-grow: 1; /* Make the InfoCenter take up remaining space */
+}
+
+/* Tabs container */
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+/* Tab content should scroll within its own container */
+.tab-content {
+  /* overflow-y: auto; */
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.table-container.mt-4 {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  position: relative; /* Allow sticky positioning of the header */
+}
+
+.row-header {
+  position: sticky;
+  left: 0; /* Fix the left-most column */
+  background-color: #f9f9f9; /* Background to prevent overlap with scrollable content */
+  z-index: 2; /* Ensure it's above the table content */
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.column-header {
+  position: sticky;
+  top: 0; /* Fix the column header */
+  background-color: #f2f2f2;
+  z-index: 1; /* Ensure the header is above the content */
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.gradient-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.gradient-table tbody tr:hover {
+  background-color: #f1f1f1;
 }

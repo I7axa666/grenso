@@ -61,37 +61,36 @@ const FinancialResult = () => {
         return (
             <table className="gradient-table">
                 <thead>
-                <tr>
-                    <th>Дни готовности/
-                    Разгрузки</th>
-                    {columnKeys.map((colKey, index) => (
-                    <th key={index} className="column-header">{colKey}</th>
-                    ))}
-                </tr>
-                </thead>
-                <tbody>
-                {tableData.map((row, rowIndex) => (
-                    Object.entries(row).map(([rowKey, values]) => (
-                    <tr key={rowIndex}>
-                        <td>{rowKey}</td>
-                        {columnKeys.map((colKey, colIndex) => {
-                        const cellValue = values.find(obj => obj[colKey] !== undefined)?.[colKey];
-                        const displayValue = cellValue === undefined ? '-' : cellValue;
-                        return (
-                            <td
-                            key={colIndex}
-                            style={{ backgroundColor: getCellColor(cellValue, minValue, maxValue) }}
-                            >
-                            {displayValue}
-                            </td>
-                        );
-                        })}
+                    <tr>
+                        <th className="row-header">Дни готовности/ Разгрузки</th>
+                        {columnKeys.map((colKey, index) => (
+                        <th key={index} className="column-header">{colKey}</th>
+                        ))}
                     </tr>
-                    ))
-                ))}
-                </tbody>
+                    </thead>
+                    <tbody>
+                    {tableData.map((row, rowIndex) => (
+                        Object.entries(row).map(([rowKey, values]) => (
+                        <tr key={rowIndex}>
+                            <td className="row-header">{rowKey}</td>
+                            {columnKeys.map((colKey, colIndex) => {
+                            const cellValue = values.find(obj => obj[colKey] !== undefined)?.[colKey];
+                            const displayValue = cellValue === undefined ? '-' : cellValue;
+                            return (
+                                <td
+                                key={colIndex}
+                                style={{ backgroundColor: getCellColor(cellValue, minValue, maxValue) }}
+                                >
+                                {displayValue}
+                                </td>
+                            );
+                            })}
+                        </tr>
+                        ))
+                    ))}
+                    </tbody>
             </table>
-            );
+        );
     };
 
     return (

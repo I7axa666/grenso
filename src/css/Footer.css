@@ -1,20 +1,20 @@
 .footer {
-    /* position: fixed;
-    bottom: 0; */
     width: 100%;
-    z-index: 1000;
-    padding-bottom: 20px; /* Отступ от низа экрана */
+    padding-bottom: 20px; /* Space below footer content */
+    background-color: #f8f9fa; /* Optional background for visibility */
+    /* position: relative; */
+    /* z-index: 1000;  */
 }
 
 .footer .row {
-    height: 100%; /* Убедитесь, что строка занимает всю высоту контейнера */
+    height: 100%; /* Ensure the row occupies full height of footer */
 }
 
 .footer .col {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Разместить содержимое по вертикали */
-    height: 100%; /* Убедитесь, что колонка занимает всю высоту строки */
+    justify-content: space-between; /* Space out elements vertically */
+    height: 100%; /* Ensure column height matches row */
 }
 
 .contact-button {
@@ -25,19 +25,19 @@
 }
 
 .footer-copyright {
-    font-size: 0.8rem; /* Уменьшить шрифт */
-    line-height: 1.5; /* Увеличить межстрочный интервал для лучшей читаемости */
+    font-size: 0.8rem;
+    line-height: 1.5;
     margin-top: 20px;
 }
 
 .footer-copyright div {
-    display: block; /* Каждая фраза на новой строке */
+    display: block; /* Place each phrase on a new line */
 }
 
 .footer-contacts a,
 .footer-contacts span {
-    display: block; /* Каждый элемент на новой строке */
-    margin-bottom: 5px; /* Отступ между элементами */
+    display: block;
+    margin-bottom: 5px; /* Space between contact items */
 }
 
 .footer-contacts {
