@@ -28,7 +28,7 @@ const Footer = () => {
                 </div>
                 <div className="col text-center">
                     <button className="btn btn-primary contact-button" onClick={() => contactWindow()}>
-                        <FontAwesomeIcon icon={faPaperPlane} /> Свяжитесь с нами
+                        <FontAwesomeIcon icon={faPaperPlane} className="fa-sm" /> Свяжитесь с нами
                     </button>
                     <section className="footer-copyright">
                         <div>2024 © АО "ГРЭНСО"</div>
