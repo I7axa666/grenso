@@ -22,3 +22,7 @@
     z-index: 1000;
     background-color: #fff; /* Optional: to ensure navbar has a background color */
   }
+
+  .img-logo {
+    width: 10em;
+  }

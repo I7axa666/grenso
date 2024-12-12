@@ -42,6 +42,7 @@
 .error {
   color: red;
   margin-top: 0px;
+  height: 50px;
 }
 
 /* Summary box styling */
@@ -227,4 +228,8 @@
 
 .gradient-table tbody tr:hover {
   background-color: #f1f1f1;
+}
+
+.text-danger {
+  font-size: 0.7em;
 }

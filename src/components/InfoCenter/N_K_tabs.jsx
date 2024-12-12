@@ -17,7 +17,7 @@ const N_K_Tabs = () => {
             setData(result);
         } catch (err) {
             console.error('Error in loadData:', err);
-            setError('Failed to load data. Please try again.');
+            setError('Не удалось загрузить данные. Перезагрузите страницу.');
         } finally {
             setLoading(false);
         }
