@@ -19,6 +19,7 @@ const FinancialResult = () => {
     const [errors, setErrors] = useState({});
     const [tableData, setTableData] = useState([]);
     const [error, setError] = useState(null);
+    const [includeCost, setIncludeCost] = useState(false); // State for checkbox
 
     const validateField = (name, value) => {
         let newErrors = { ...errors };
@@ -50,7 +51,6 @@ const FinancialResult = () => {
                 }
                 break;
             case "successful_discharge":
-               
                 if (value > total_discharge) {
                     newErrors[name] = "Число успешных событий больше направленных команд";
                 } else {
@@ -60,8 +60,7 @@ const FinancialResult = () => {
             case "total_discharge":
                 if (value > total_events) {
                     newErrors[name] = "Число команд больше всех событий";
-                } 
-                else if (value < successful_discharge) {
+                } else if (value < successful_discharge) {
                     newErrors[name] = "Число команд меньше числа успешных событий";
                 } else {
                     delete newErrors[name];
@@ -85,6 +84,7 @@ const FinancialResult = () => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
         validateField(name, value);
+        setTableData([]);
     };
 
     const isFormValid = () => {
@@ -139,14 +139,17 @@ const FinancialResult = () => {
                             <tr key={rowIndex}>
                                 <td className="row-header">{rowKey}</td>
                                 {columnKeys.map((colKey, colIndex) => {
-                                    const cellValue = values.find((obj) => obj[colKey] !== undefined)?.[colKey];
-                                    const displayValue = cellValue === undefined ? "-" : cellValue;
+                                    const originalValue = values.find((obj) => obj[colKey] !== undefined)?.[colKey];
+                                    console.log(originalValue)
+                                    const cost_KO = formData.contractual_volume * import.meta.env.VITE_API_COST_KO_SERVICES;
+                                    const adjustedValue = includeCost && originalValue !== "-" ? originalValue - cost_KO : originalValue;
+                                    const displayValue = adjustedValue === undefined ? "-" : adjustedValue;
                                     return (
                                         <td
                                             key={colIndex}
                                             style={{
                                                 backgroundColor: getCellColor(
-                                                    cellValue,
+                                                    adjustedValue,
                                                     minValue,
                                                     maxValue
                                                 ),
@@ -164,50 +167,60 @@ const FinancialResult = () => {
         );
     };
 
-
     return (
         <div className="financial-result container">
             <div className="inputs row">
-            {[
-                { label: "Цена, руб. за МВт", name: "price", min: 0, type: "number" },
-                { label: "Договорной объем снижения, МВт", name: "contractual_volume", min: 0.1, max: 9000, type: "number" },
-                { label: "Длительность снижения, ч.", name: "reduction_hours", options: [1, 2, 3, 4] },
-                { label: "Всего событий в месяц", name: "total_events", options: [1, 2, 3, 4, 5] },
-                { label: "Всего дней в месяце", name: "total_days", options: [23, 22, 21, 20, 19, 18, 17, 16, 15, 14] },
-                { label: "Число успешных событий", name: "successful_discharge", options: [0, 1, 2, 3, 4, 5] },
-                { label: "Число направленных команд", name: "total_discharge", options: [0, 1, 2, 3, 4, 5] },
-                { label: "Количество накопленных готовностей", name: "availability_days", min: 0, max: 25, type: "number" },
-                { label: "Количество накопленных неготовностей", name: "unavailability_days", min: 0, max: 25, type: "number" },
-            ].map(({ label, name, options, type, ...props }) => (
-                <div key={name} className="input-group mb-3 col-md-6">
+                {[
+                    { label: "Цена, руб. за МВт", name: "price", min: 0, type: "number" },
+                    { label: "Договорной объем снижения, МВт", name: "contractual_volume", min: 0.1, max: 9000, type: "number" },
+                    { label: "Длительность снижения, ч.", name: "reduction_hours", options: [1, 2, 3, 4] },
+                    { label: "Всего событий в месяц", name: "total_events", options: [1, 2, 3, 4, 5] },
+                    { label: "Всего дней в месяце", name: "total_days", options: [23, 22, 21, 20, 19, 18, 17, 16, 15, 14] },
+                    { label: "Число успешных событий", name: "successful_discharge", options: [0, 1, 2, 3, 4, 5] },
+                    { label: "Число направленных команд", name: "total_discharge", options: [0, 1, 2, 3, 4, 5] },
+                    { label: "Количество накопленных готовностей", name: "availability_days", min: 0, max: 25, type: "number" },
+                    { label: "Количество накопленных неготовностей", name: "unavailability_days", min: 0, max: 25, type: "number" },
+                ].map(({ label, name, options, type, ...props }) => (
+                    <div key={name} className="input-group mb-3 col-md-6">
+                        <label className="form-label">
+                            {errors[name] ? <span className="text-danger">{errors[name]}</span> : label}
+                        </label>
+                        {options ? (
+                            <select
+                                className="form-select"
+                                name={name}
+                                value={formData[name]}
+                                onChange={handleChange}
+                            >
+                                {options.map((option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </select>
+                        ) : (
+                            <input
+                                type={type}
+                                className="form-control"
+                                name={name}
+                                value={formData[name]}
+                                onChange={handleChange}
+                                {...props}
+                            />
+                        )}
+                    </div>
+                ))}
+                <div className="input-group mb-3 col-md-6">
                     <label className="form-label">
-                    {errors[name] ? <span className="text-danger">{errors[name]}</span> : label}
-                    </label>
-                    {options ? (
-                        <select
-                            className="form-select"
-                            name={name}
-                            value={formData[name]}
-                            onChange={handleChange}
-                        >
-                            {options.map((option) => (
-                                <option key={option} value={option}>
-                                    {option}
-                                </option>
-                            ))}
-                        </select>
-                    ) : (
                         <input
-                            type={type}
-                            className="form-control"
-                            name={name}
-                            value={formData[name]}
-                            onChange={handleChange}
-                            {...props}
+                            type="checkbox"
+                            className="form-check-input me-2"
+                            checked={includeCost}
+                            onChange={(e) => setIncludeCost(e.target.checked)}
                         />
-                    )}
+                        Учитывать стоимость услуг КО
+                    </label>
                 </div>
-            ))}
             </div>
             <button
                 onClick={handleSubmit}
@@ -223,4 +236,3 @@ const FinancialResult = () => {
 };
 
 export default FinancialResult;
-
