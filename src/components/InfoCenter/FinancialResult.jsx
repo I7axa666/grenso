@@ -140,10 +140,15 @@ const FinancialResult = () => {
                                 <td className="row-header">{rowKey}</td>
                                 {columnKeys.map((colKey, colIndex) => {
                                     const originalValue = values.find((obj) => obj[colKey] !== undefined)?.[colKey];
-                                    console.log(originalValue)
+
                                     const cost_KO = formData.contractual_volume * import.meta.env.VITE_API_COST_KO_SERVICES;
                                     const adjustedValue = includeCost && originalValue !== "-" ? originalValue - cost_KO : originalValue;
-                                    const displayValue = adjustedValue === undefined ? "-" : adjustedValue;
+                                    // const displayValue = adjustedValue === undefined ? "-" : adjustedValue;
+                                    const displayValue = adjustedValue?.toLocaleString(undefined, {
+                                        minimumFractionDigits: 0,
+                                        maximumFractionDigits: 0,
+                                        })
+                                        || "-";
                                     return (
                                         <td
                                             key={colIndex}
