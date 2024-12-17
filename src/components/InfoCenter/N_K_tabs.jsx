@@ -79,7 +79,7 @@ const N_K_Tabs = () => {
                         <tbody>
                             {result?.days.map((day, idx) => (
                                 <tr key={idx}>
-                                    <td>{new Date(day.target_date).toLocaleDateString()}</td>
+                                    <td>{new Date(day.target_date).toLocaleDateString('ru-RU')}</td>
                                     <td>{day.dr_type}</td>
                                     <td>{day.prev_workday_count?.toLocaleString() || 'N/A'}</td>
                                     <td>{day.k_dr_effect_avg?.toLocaleString('fr-FR', {
