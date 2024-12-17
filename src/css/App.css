@@ -9,6 +9,7 @@
 .content-container {
     flex: 1; /* Allow this section to grow and fill available space */
     overflow-y: auto; /* Vertical scrolling for content */
+    overflow-x: auto;
     padding-top: 70px; /* Avoid overlap with fixed header, adjust as needed */
     padding-bottom: 80px; /* Space for the footer, adjust as needed */
 }

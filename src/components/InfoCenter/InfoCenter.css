@@ -8,20 +8,6 @@
   /* overflow-y: auto;  */
 }
 
-/* Table container */
-.table-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px; /* Adds space from the top */
-  margin-bottom: 80px; /* Space to prevent overlap with the footer */
-  padding: 16px; /* Adds padding inside the container */
-  border: 1px solid #ddd; /* Optional: Adds a border for better visual distinction */
-  border-radius: 8px; /* Optional: Rounded corners */
-  background-color: #fff;
-  /* overflow: auto;  */
-  /* max-width: 100%;  */
-}
-
 /* Button styling */
 .refresh-button {
   margin-bottom: 10px;
@@ -73,6 +59,7 @@
   overflow-x: auto; /* Horizontal scrolling if necessary */
   overflow-y: auto; /* Vertical scrolling enabled */
   max-height: 400px; /* Set a max-height to enable scrolling */
+  min-width: 400px;
 }
 
 .scrollable-table th, .scrollable-table td {
@@ -124,7 +111,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fff;
-  overflow: hidden; /* Ensure no content overflows outside the container */
+  overflow: auto; /* Ensure no content overflows outside the container */
   max-width: 100%;
   position: relative;
 }
