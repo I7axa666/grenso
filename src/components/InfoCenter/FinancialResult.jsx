@@ -144,7 +144,7 @@ const FinancialResult = () => {
                                     const cost_KO = formData.contractual_volume * import.meta.env.VITE_API_COST_KO_SERVICES;
                                     const adjustedValue = includeCost && originalValue !== "-" ? originalValue - cost_KO : originalValue;
                                     // const displayValue = adjustedValue === undefined ? "-" : adjustedValue;
-                                    const displayValue = adjustedValue?.toLocaleString(undefined, {
+                                    const displayValue = adjustedValue?.toLocaleString('fr-FR', {
                                         minimumFractionDigits: 0,
                                         maximumFractionDigits: 0,
                                         })

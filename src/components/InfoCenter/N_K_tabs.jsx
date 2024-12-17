@@ -82,15 +82,15 @@ const N_K_Tabs = () => {
                                     <td>{new Date(day.target_date).toLocaleDateString()}</td>
                                     <td>{day.dr_type}</td>
                                     <td>{day.prev_workday_count?.toLocaleString() || 'N/A'}</td>
-                                    <td>{day.k_dr_effect_avg?.toLocaleString(undefined, {
+                                    <td>{day.k_dr_effect_avg?.toLocaleString('fr-FR', {
                                         minimumFractionDigits: 2,
                                         maximumFractionDigits: 2,
                                     }) || 'N/A'}</td>
-                                    <td>{day.dr_effect_avg?.toLocaleString(undefined, {
+                                    <td>{day.dr_effect_avg?.toLocaleString('fr-FR', {
                                         minimumFractionDigits: 0,
                                         maximumFractionDigits: 0,
                                     }) || 'N/A'}</td>
-                                    <td>{day.dr_effect_total?.toLocaleString(undefined, {
+                                    <td>{day.dr_effect_total?.toLocaleString('fr-FR', {
                                         minimumFractionDigits: 0,
                                         maximumFractionDigits: 0,
                                     }) || 'N/A'}</td>
