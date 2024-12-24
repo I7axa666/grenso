@@ -38,26 +38,50 @@ return Array.from(columnKeys);
 };
 
 const getCellColor = (value, min, max) => {
-   if (typeof value !== 'number') return 'transparent'; // Пропускаем нечисловые значения
+   if (typeof value !== 'number') return 'transparent'; // Skip non-numeric values
 
-   // Цвет для значения 0
-   if (value === 0) return 'rgb(225, 255, 255)'; // Светло-бежевый
+   // Color for value 0
+   if (value === 0) return 'rgb(225, 255, 255)'; // Light beige
 
    const ratio = (value - min) / (max - min);
 
    if (value < 0) {
-       // Градация от светло-бежевого до красного для отрицательных значений
-       const red = Math.round(245 + (1 - ratio) * (255 - 245));
-       const green = Math.round(225 - ratio * 245);
-       const blue = Math.round(220 - ratio * 220);
+       // Gradation from dark red to light beige for negative values
+       const invertedRatio = (value - max) / (min - max); // Adjust to invert the ratio for negatives
+       const red = Math.round(245 + invertedRatio * (255 - 245)); // Dark red for smaller negatives
+       const green = Math.round(500 * (1 - invertedRatio)); // Minimal green for dark red
+       const blue = Math.round(500 * (1 - invertedRatio)); // Minimal blue for dark red
        return `rgb(${red}, ${green}, ${blue})`;
    } else {
-       // Градация от светло-бежевого до зеленого для положительных значений
-       const red = Math.round(245 - ratio * 245);
-       const green = Math.round(225 + ratio * (255 - 245));
-       const blue = Math.round(220 - ratio * 220);
+       // Gradation from light beige to green for positive values
+       const red = Math.round(300 - ratio * 245);
+       const green = Math.round(290 + ratio * (255 - 245));
+       const blue = Math.round(300 - ratio * 220);
        return `rgb(${red}, ${green}, ${blue})`;
    }
 };
 
 export { findMinMaxValues, getAllColumnKeys, getCellColor };
+
+// const getCellColor = (value, min, max) => {
+//    if (typeof value !== 'number') return 'transparent'; // Skip non-numeric values
+
+//    // Color for value 0
+//    if (value === 0) return 'rgb(225, 255, 255)'; // Light beige
+
+//    const ratio = (value - min) / (max - min);
+
+//    if (value < 0) {
+//        // Gradation from dark red to light beige for negative values
+//        const red = Math.round(245 - ratio * 200); // Darker red for smaller values
+//        const green = Math.round(225 + ratio * 200); // Lightens green
+//        const blue = Math.round(220 + ratio * 200); // Lightens blue
+//        return rgb(${red}, ${green}, ${blue});
+//    } else {
+//        // Gradation from light beige to green for positive values
+//        const red = Math.round(245 - ratio * 245);
+//        const green = Math.round(225 + ratio * (255 - 245));
+//        const blue = Math.round(220 - ratio * 220);
+//        return rgb(${red}, ${green}, ${blue});
+//    }
+// };
