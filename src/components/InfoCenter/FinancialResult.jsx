@@ -11,9 +11,10 @@ const FinancialResult = () => {
         total_events: 5,
         total_days: 21,
         successful_discharge: 0,
-        total_discharge: 5,
+        total_discharge: 0,
         availability_days: 0,
         unavailability_days: 0,
+        unavailability_in_command: 0,
     });
 
     const [errors, setErrors] = useState({});
@@ -101,7 +102,7 @@ const FinancialResult = () => {
             const numericFormData = Object.fromEntries(
                 Object.entries(formData).map(([key, value]) => [key, parseFloat(value) || 0])
             );
-
+            // console.log(numericFormData);
             const response = await fetchData("matrix", numericFormData);
 
             if (!response.result) {
@@ -179,12 +180,13 @@ const FinancialResult = () => {
                     { label: "Цена, руб. за МВт", name: "price", min: 0, type: "number" },
                     { label: "Договорной объем снижения, МВт", name: "contractual_volume", min: 0.1, max: 9000, type: "number" },
                     { label: "Длительность снижения, ч.", name: "reduction_hours", options: [1, 2, 3, 4] },
-                    { label: "Всего событий в месяц", name: "total_events", options: [1, 2, 3, 4, 5] },
                     { label: "Всего дней в месяце", name: "total_days", options: [23, 22, 21, 20, 19, 18, 17, 16, 15, 14] },
-                    { label: "Число успешных событий", name: "successful_discharge", options: [0, 1, 2, 3, 4, 5] },
+                    { label: "Всего событий в месяц", name: "total_events", options: [1, 2, 3, 4, 5] },
                     { label: "Число направленных команд", name: "total_discharge", options: [0, 1, 2, 3, 4, 5] },
+                    { label: "Число успешных событий", name: "successful_discharge", options: [0, 1, 2, 3, 4, 5] },
                     { label: "Количество накопленных готовностей", name: "availability_days", min: 0, max: 25, type: "number" },
-                    { label: "Количество накопленных неготовностей", name: "unavailability_days", min: 0, max: 25, type: "number" },
+                    { label: (<span>Количество накопленных <strong>НЕ</strong>готовностей</span>), name: "unavailability_days", min: 0, max: 25, type: "number" },
+                    { label: (<span>Число событий в дни <strong>НЕ</strong>готовностей</span>), name: "unavailability_in_command", options: [0, 1, 2, 3, 4, 5] },
                 ].map(({ label, name, options, type, ...props }) => (
                     <div key={name} className="input-group mb-3 col-md-6">
                         <label className="form-label">
@@ -219,7 +221,7 @@ const FinancialResult = () => {
                     <label className="form-label">
                         <input
                             type="checkbox"
-                            className="form-check-input me-2"
+                            className="form-check-input me-2 mt-0 checkbox-large"
                             checked={includeCost}
                             onChange={(e) => setIncludeCost(e.target.checked)}
                         />
