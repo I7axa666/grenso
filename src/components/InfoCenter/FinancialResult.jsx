@@ -28,40 +28,40 @@ const FinancialResult = () => {
             ...formData,
             [name]: value,
         };
-
+        
         switch (name) {
             case "total_days":
-                if (value <= 0) {
+                if (Number(value) < 1) {
                     newErrors[name] = "Всего дней в месяце меньше 1";
                 } else {
                     delete newErrors[name];
                 }
                 break;
             case "availability_days":
-                if (value > total_days) {
+                if (Number(value) > Number(total_days)) {
                     newErrors[name] = "Количество накопленных готовностей больше Дней в месяце";
                 } else {
                     delete newErrors[name];
                 }
                 break;
             case "unavailability_days":
-                if (value > total_days) {
+                if (Number(value) > Number(total_days)) {
                     newErrors[name] = "Количество НЕготовностей больше Дней в месяце";
                 } else {
                     delete newErrors[name];
                 }
                 break;
             case "successful_discharge":
-                if (value > total_discharge) {
+                if (Number(value) > Number(total_discharge)) {
                     newErrors[name] = "Число успешных событий больше направленных команд";
                 } else {
                     delete newErrors[name];
                 }
                 break;
             case "total_discharge":
-                if (value > total_events) {
+                if (Number(value) > Number(total_events)) {
                     newErrors[name] = "Число команд больше всех событий";
-                } else if (value < successful_discharge) {
+                } else if (Number(value) < Number(successful_discharge)) {
                     newErrors[name] = "Число команд меньше числа успешных событий";
                 } else {
                     delete newErrors[name];
