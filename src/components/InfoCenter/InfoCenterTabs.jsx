@@ -60,7 +60,7 @@ const InfoCenterTabs = () => {
           className={`tab ${activeTab === 'createForm5' ? 'btn btn-primary' : 'btn btn-secondary'} `}
           onClick={() => setActiveTab('createForm5')}
         >
-          Создать Форму 5
+          Расчет RMSE
         </button>
       </div>
       <div className="tab-content">

@@ -94,10 +94,11 @@ const Form5Uploader = () => {
   
   return (
       <div className="form5-uploader">
-       <h2>Создание Формы 5</h2>
+       <h2>Расчет RMSE и создание Формы 5</h2>
        <div className="instructions">
           <h3>Инструкции по загрузке файла</h3>
           <p>Файл должен быть в формате <strong>.xlsx</strong> и содержать не менее 672 строк (данные минимум за 28 к.д.).</p>
+          <p>В расчет будут взяты посление 45 календарных дней.</p>
           <p>Обязательные колонки:</p>
           <ul>
            <li><strong>Столбец A</strong> - Дата - в формате ДД.ММ.ГГГГ</li>
@@ -146,7 +147,7 @@ const Form5Uploader = () => {
           </select>
   
           <button onClick={handleUpload} disabled={loading || !isValid}>
-           {loading ? "Processing..." : "Создать форму 5"}
+           {loading ? "Processing..." : "Запустить расчет"}
           </button>
   
           {loading && <div className="loading-animation">Обработка данных...</div>}
