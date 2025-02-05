@@ -63,25 +63,3 @@ const getCellColor = (value, min, max) => {
 
 export { findMinMaxValues, getAllColumnKeys, getCellColor };
 
-// const getCellColor = (value, min, max) => {
-//    if (typeof value !== 'number') return 'transparent'; // Skip non-numeric values
-
-//    // Color for value 0
-//    if (value === 0) return 'rgb(225, 255, 255)'; // Light beige
-
-//    const ratio = (value - min) / (max - min);
-
-//    if (value < 0) {
-//        // Gradation from dark red to light beige for negative values
-//        const red = Math.round(245 - ratio * 200); // Darker red for smaller values
-//        const green = Math.round(225 + ratio * 200); // Lightens green
-//        const blue = Math.round(220 + ratio * 200); // Lightens blue
-//        return rgb(${red}, ${green}, ${blue});
-//    } else {
-//        // Gradation from light beige to green for positive values
-//        const red = Math.round(245 - ratio * 245);
-//        const green = Math.round(225 + ratio * (255 - 245));
-//        const blue = Math.round(220 - ratio * 220);
-//        return rgb(${red}, ${green}, ${blue});
-//    }
-// };
