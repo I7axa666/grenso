@@ -1,92 +1,22 @@
-import { useState } from "react";
+import { useFormContext } from "./context/FinancialResultContext";
 import { fetchData } from "../../js/apiService";
 import { findMinMaxValues, getAllColumnKeys, getCellColor } from "../../js/utilits";
 import "./InfoCenter.css";
 
+import validateField from "../../js/validateFinResForm";
+
+
 const FinancialResult = () => {
-    const [formData, setFormData] = useState({
-        price: parseFloat(import.meta.env.VITE_API_CURRENT_PRICE || "437000"),
-        contractual_volume: 1,
-        reduction_hours: 4,
-        total_events: 5,
-        total_days: 21,
-        successful_discharge: 0,
-        total_discharge: 0,
-        availability_days: 0,
-        unavailability_days: 0,
-        unavailability_in_command: 0,
-    });
-
-    const [errors, setErrors] = useState({});
-    const [tableData, setTableData] = useState([]);
-    const [error, setError] = useState(null);
-    const [includeCost, setIncludeCost] = useState(false); // State for checkbox
-
-    const validateField = (name, value) => {
-        let newErrors = { ...errors };
-        const { total_days, availability_days, unavailability_days, total_discharge, successful_discharge, total_events } = {
-            ...formData,
-            [name]: value,
-        };
-        
-        switch (name) {
-            case "total_days":
-                if (Number(value) < 1) {
-                    newErrors[name] = "Всего дней в месяце меньше 1";
-                } else {
-                    delete newErrors[name];
-                }
-                break;
-            case "availability_days":
-                if (Number(value) > Number(total_days)) {
-                    newErrors[name] = "Количество накопленных готовностей больше Дней в месяце";
-                } else {
-                    delete newErrors[name];
-                }
-                break;
-            case "unavailability_days":
-                if (Number(value) > Number(total_days)) {
-                    newErrors[name] = "Количество НЕготовностей больше Дней в месяце";
-                } else {
-                    delete newErrors[name];
-                }
-                break;
-            case "successful_discharge":
-                if (Number(value) > Number(total_discharge)) {
-                    newErrors[name] = "Число успешных событий больше направленных команд";
-                } else {
-                    delete newErrors[name];
-                }
-                break;
-            case "total_discharge":
-                if (Number(value) > Number(total_events)) {
-                    newErrors[name] = "Число команд больше всех событий";
-                } else if (Number(value) < Number(successful_discharge)) {
-                    newErrors[name] = "Число команд меньше числа успешных событий";
-                } else {
-                    delete newErrors[name];
-                }
-                break;
-            default:
-                break;
-        }
-
-        // Cross-field validation
-        if (parseFloat(availability_days) + parseFloat(unavailability_days) > total_days) {
-            newErrors.availability_days = "Готовности + Неготовности превышают дни в месяце";
-        } else {
-            delete newErrors.availability_days;
-        }
-
-        setErrors(newErrors);
-    };
-
+    const { state, dispatch } = useFormContext();
+    const { formData, errors, tableData, error, includeCost } = state;
+    
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-        validateField(name, value);
-        setTableData([]);
-    };
+        dispatch({ type: 'UPDATE_FORM_DATA', payload: { [name]: value } });
+        const newErrors = validateField(name, value, formData, errors);
+        dispatch({ type: 'SET_ERRORS', payload: newErrors });
+        dispatch({ type: 'SET_TABLE_DATA', payload: [] });
+};
 
     const isFormValid = () => {
         return (
@@ -109,10 +39,10 @@ const FinancialResult = () => {
                 throw new Error(`Error: ${response.statusText}`);
             }
 
-            setTableData(response.result);
+            dispatch({ type: 'SET_TABLE_DATA', payload: response.result });
         } catch (error) {
             console.error("Error submitting data:", error);
-            setError('Не удалось загрузить данные. Перезагрузите страницу.');
+            dispatch({ type: 'SET_ERROR', payload: 'Не удалось загрузить данные. Перезагрузите страницу.'});
         }
     };
 
@@ -223,7 +153,7 @@ const FinancialResult = () => {
                             type="checkbox"
                             className="form-check-input me-2 mt-0 checkbox-large"
                             checked={includeCost}
-                            onChange={(e) => setIncludeCost(e.target.checked)}
+                            onChange={() => dispatch({ type: 'TOGGLE_INCLUDE_COST' })}
                         />
                         Учитывать стоимость услуг КО
                     </label>
