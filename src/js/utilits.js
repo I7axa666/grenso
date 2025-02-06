@@ -61,5 +61,24 @@ const getCellColor = (value, min, max) => {
    }
 };
 
-export { findMinMaxValues, getAllColumnKeys, getCellColor };
+const excelDateToJSDate = (serial) => {
+   // Если serial уже является объектом Date, просто возвращаем его
+   if (serial instanceof Date) {
+       return serial;
+   }
+   
+   // Если serial является строкой, попробуем создать объект Date из этой строки
+   const date = new Date(serial);
+   if (!isNaN(date)) {
+       return date;
+   }
+   
+   // Если serial является числом, используем предыдущий метод преобразования
+   const epoch = new Date(Date.UTC(1899, 11, 30)); // 30 декабря 1899 года
+   const days = Math.floor(serial);
+   const milliseconds = days * 24 * 60 * 60 * 1000; // Количество миллисекунд в дне
+   return new Date(epoch.getTime() + milliseconds);
+   };
+
+export { findMinMaxValues, getAllColumnKeys, getCellColor, excelDateToJSDate };
 
