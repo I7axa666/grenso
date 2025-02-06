@@ -1,23 +1,25 @@
 .footer {
     width: 100%;
-    padding-bottom: 20px; /* Space below footer content */
-    background-color: #f8f9fa; /* Optional background for visibility */
-    /* position: relative; */
-    /* z-index: 1000;  */
+    padding-bottom: 20px;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .footer .row {
-    height: 100%; /* Ensure the row occupies full height of footer */
+    display: flex;
+    width: 100%;
 }
 
 .footer .col {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Space out elements vertically */
-    height: 100%; /* Ensure column height matches row */
+    justify-content: space-between;
 }
 
-.contact-button {
+.text-center .contact-button {
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
@@ -31,13 +33,13 @@
 }
 
 .footer-copyright div {
-    display: block; /* Place each phrase on a new line */
+    display: block;
 }
 
 .footer-contacts a,
 .footer-contacts span {
     display: block;
-    margin-bottom: 5px; /* Space between contact items */
+    margin-bottom: 5px;
 }
 
 .footer-contacts {
@@ -50,4 +52,29 @@
 
 .contact-button .custom-icon-size {
     font-size: 1.2em;
+}
+
+@media (max-width: 768px) {
+    .footer .row {
+        flex-direction: column; /* Изменяем ориентацию на вертикальную */
+    }
+
+    .footer .col {
+        display: none; /* Скрываем все колонки по умолчанию */
+    }
+
+    .footer .col.text-right {
+        display: flex; /* Показываем правую колонку первой */
+        text-align: center;
+        order: 1;
+    }
+
+    .footer .col.text-center {
+        display: flex; /* Показываем центральную колонку последней */
+        order: 2;
+    }
+    .footer-contacts {
+        margin-left: auto;
+        margin-right: auto ;
+    }
 }

@@ -147,10 +147,14 @@ const Form5Uploader = () => {
           </select>
   
           <button onClick={handleUpload} disabled={loading || !isValid}>
-           {loading ? "Processing..." : "Запустить расчет"}
+           {loading ? "Загрузка..." : "Запустить расчет"}
           </button>
   
-          {loading && <div className="loading-animation">Обработка данных...</div>}
+          {loading && 
+            <div className="spinner-grow text-primary" role="status">
+               {/* <span className="visually-hidden">Loading...</span> */}
+            </div>
+         }
        </div>
       </div>
 );
