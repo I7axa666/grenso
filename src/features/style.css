@@ -1,0 +1,29 @@
+.diagonal-infographics .table {
+font-size: 0.85rem;
+}
+
+.diagonal-infographics th {
+background-color: #f8f9fa;
+position: sticky;
+top: 0;
+z-index: 10;
+}
+
+.diagonal-infographics td {
+vertical-align: middle;
+text-align: center;
+padding: 0.3rem;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+.diagonal-infographics .table-responsive {
+    font-size: 0.75rem;
+}
+
+.diagonal-infographics th, 
+.diagonal-infographics td {
+    padding: 0.2rem;
+    min-width: 35px !important;
+}
+}

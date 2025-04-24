@@ -1,0 +1,61 @@
+.mainPageContainer1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 5em;
+    cursor: pointer;
+    color: gray;
+}
+
+.mainPage {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    position: relative;
+    max-height: 90vh;
+    height: 90vh;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainPage .row {
+    flex: 1;
+    min-height: 0;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 100%;
+}
+
+.table th,
+.table td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: center;
+}
+
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 2;
+}

@@ -12,6 +12,7 @@ import HomePage from './HomePage.jsx'
 import InfoCenterTabs from './InfoCenter/InfoCenterTabs.jsx';
 import DefaultLayout from './DefaultLayout.jsx';
 import InfoCenterLayout from './InfoCenterLayout.jsx';
+import DashBoardPage from '../features/AccountPage/Dashboard/DashBoardPage.tsx'
 
 const router = createBrowserRouter(
   [
@@ -43,6 +44,10 @@ const router = createBrowserRouter(
            element: <InfoCenterTabs />,
           },
        ],
+      },
+      {
+       path: "/account.html",
+       element: <DashBoardPage />
       },
       {
        path: "*",

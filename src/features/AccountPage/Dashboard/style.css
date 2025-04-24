@@ -1,0 +1,33 @@
+.day-cell {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #dee2e6;
+    margin: 0 auto;
+    position: relative;
+}
+
+.bg-light-success {
+    background-color: #07fa4060 !important; /* Светло-зеленый из палитры Bootstrap */
+  }
+
+.aor-group {
+    --border-width: 3px;
+    position: relative;
+    margin: 12px 0;
+}
+  
+.aor-group::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--border-width);
+    background: #000;
+}
+
+.tooltip-inner {
+    background-color: #333;
+    padding: 8px 12px;
+    font-size: 14px;
+}
