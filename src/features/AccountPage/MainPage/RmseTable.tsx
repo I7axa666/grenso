@@ -1,10 +1,29 @@
-import { DetailConsumptionProps } from "./DetailConsumption";
+import { OrData } from "../types";
+
+interface DetailConsumptionProps {
+    data: OrData
+    or_reduction_volume?: number
+}
 
 const RmseTable: React.FC <DetailConsumptionProps> = ({ data, or_reduction_volume }) =>  {
+    if (data.rmse_data.rrmse_no_tweak === null) {
+         return (
+            <div className="col">
+                <h5>Результаты расчетов применимости ГБН</h5>
+                <div className="card p-3">
+                    
+                    <a>Не хватает данных для расчета RRMSE</a>
+                    
+                </div>
+                <p>Величина подстройки: {data.adjustment_gbn_zgn.adjustment}</p>
+            </div>
+         )
+        }
+
     const rrmseValues = [
-        data.rmse_data.rrmse_no_tweak.toFixed(3),
-        data.rmse_data.rrmse_with_tweak.toFixed(3),
-        data.rmse_data.rrmse_with_tweak_yesterday.toFixed(3)
+        parseFloat(data.rmse_data.rrmse_no_tweak.toFixed(3)),
+        parseFloat(data.rmse_data.rrmse_with_tweak.toFixed(3)),
+        parseFloat(data.rmse_data.rrmse_with_tweak_yesterday.toFixed(3))
     ]
 
     const minRrmseValue = Math.min(...rrmseValues);
@@ -16,7 +35,7 @@ const RmseTable: React.FC <DetailConsumptionProps> = ({ data, or_reduction_volum
     });
 
     return (
-        <div className="col-md-6">
+        <div className="col">
             <h5>Результаты расчетов применимости ГБН {red_volume} кВт</h5>
             <div className="card p-3">
                 <table className="table table-sm">

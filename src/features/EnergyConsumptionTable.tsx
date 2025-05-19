@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import { TableCell, Day, ApiResponse } from '../types';
+import { TableCell, Day } from '../types';
+import { ApiResponse } from './AccountPage/types';
 import './style.css';   
 
 interface Props {
@@ -55,7 +56,7 @@ const EnergyConsumptionTable: React.FC<Props> = ({ data }) => {
                         key={idx}
                         className={`${getCellColor({
                           date: consumption.consumption_day.date.split('-')[2],
-                          isHoliday: consumption.consumption_day.types.includes('holliday_weekends'),
+                          isHoliday: consumption.consumption_day.types?.includes('holliday_weekends'),
                           dayTypes: consumption.day_types,
                           isStatus1: consumption.is_status_1,
                           hasEvent: consumption.day_types.includes('event')

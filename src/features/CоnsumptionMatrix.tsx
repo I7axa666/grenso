@@ -1,6 +1,5 @@
 import { Card, Table } from 'react-bootstrap';
 import { useAppSelector } from '../store/hooks';
-import { EnergyData } from '../types';
 
 const ConsumptionMatrix: React.FC = () => {
   const { data, loading, error } = useAppSelector(state => state.energy);

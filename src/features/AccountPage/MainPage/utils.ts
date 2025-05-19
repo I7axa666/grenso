@@ -1,3 +1,5 @@
+import { Events } from '../types';
+
 const getCollapsedHours = (zone?: number) => {
     if (zone === 1) return { start: [1, 7], end: [22, 24] };
     if (zone === 2) return { start: [1, 4], end: [18, 24] };
@@ -11,7 +13,6 @@ const calculateMinMax = (data: Record<string, Record<string, number>>) => {
         max: Math.max(...allValues),
     };
 };
-
 
 const getGradientColor = (value: number, min: number, max: number) => {
     const ratio = (value - min) / (max - min);

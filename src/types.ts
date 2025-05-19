@@ -48,7 +48,7 @@ export interface RegulationObject {
 // Типы для таблицы
 export interface TableCell {
   date: string; // "01"
-  isHoliday: boolean;
+  isHoliday?: boolean; 
   dayTypes: string[];
   isStatus1: boolean;
   hasEvent: boolean;

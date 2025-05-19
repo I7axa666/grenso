@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
-import { Day, Consumption, Availability, Events } from '../types'
+import { Day, Consumption, Availability, Events, ContextInInterval } from '../types'
+import { useAppDispatch } from '../../../store/hooks';
 import apiClient from '../../../api/client';
 import StatusIndicator from './StatusIndicator';
 import './style.css'
+import { setSelectedAorId, setSelectedOrId, setSelectedDay, setModalData } from '../../../store/slices/dashboardSlice';
 
 interface DayCellProps {
     day: Day;
@@ -13,19 +15,33 @@ interface DayCellProps {
     or_id?: number;
     or_name?: string;
     aor_name?: string;
+    zone: number;
+    reduction_volume?: number;
+    or_context?: ContextInInterval[];
 }
 
-const DayCell: React.FC<DayCellProps & { onCellClick: (data: any) => void }> = React.memo(({ 
-    day, consumption, availability, aor_event, or_id, onCellClick, aor_id
+const DayCell: React.FC<DayCellProps> = React.memo(({ 
+    day, consumption, availability, aor_event, or_id, aor_id, or_name, aor_name, zone, reduction_volume, or_context
 }) => {
+    const dispatch = useAppDispatch();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-
+    
     const handleClick = async () => {
         if (!aor_id && !or_id) return;
-        
+
         try {
             setLoading(true);
+            if (or_id) {
+                dispatch(setSelectedOrId({ selectedOrId: or_id }));
+            } else if (aor_id) {
+                dispatch(setSelectedAorId({ selectedAorId: aor_id }));
+            }
+            dispatch(setSelectedDay({
+                date: day.date,
+                types: day.types
+            }));
+
             setError(null);
             
             const date = new Date(day.date);
@@ -38,18 +54,26 @@ const DayCell: React.FC<DayCellProps & { onCellClick: (data: any) => void }> = R
                 year: year.toString(),
                 month: month.toString(),
                 day: dayNum.toString(),
-                or_id: or_id ? or_id.toString() : '',
-                aor_id: aor_id ? aor_id.toString() : '',
             });
 
-            if (aor_id) {
-                params.append('aor_id', aor_id.toString(), );
-            } else if (or_id) {
+            if (or_id) {
                 params.append('or_id', or_id.toString());
+            } else if (aor_id) {
+                params.append('aor_id', aor_id.toString(), );
             }
 
             const response = await apiClient.get(`${endpoint}?${params.toString()}`);
-            onCellClick(response.data);
+            
+            dispatch(setModalData({
+                        data: response.data,
+                        or_name,
+                        aor_name,
+                        or_reduction_volume: reduction_volume,
+                        zone,
+                        events: aor_event ? [aor_event] : [],
+                        or_context,
+            }));
+            
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Unknown error');
             console.error('Failed to fetch data:', err);

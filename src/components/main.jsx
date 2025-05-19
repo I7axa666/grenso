@@ -1,7 +1,9 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { FormProvider } from '../components/InfoCenter/context/FinancialResultContext.jsx';
+import { Provider } from 'react-redux'; // Импортируем Provider
+import { store } from '../store/store.js'; // Импортируем store
+import { FormProvider } from './InfoCenter/context/FinancialResultContext.jsx';
 import Page404 from './Page404.jsx';
 import About from './About.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,7 +14,7 @@ import HomePage from './HomePage.jsx'
 import InfoCenterTabs from './InfoCenter/InfoCenterTabs.jsx';
 import DefaultLayout from './DefaultLayout.jsx';
 import InfoCenterLayout from './InfoCenterLayout.jsx';
-import DashBoardPage from '../features/AccountPage/Dashboard/DashBoardPage.tsx'
+import DashBoardPage from '../features/AccountPage/Dashboard/DashBoardPage.js'
 
 const router = createBrowserRouter(
   [
@@ -65,8 +67,10 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <FormProvider>
-      <RouterProvider router={router} />
-    </FormProvider>
+    <Provider store={store}> {/* Обертка для Redux */}
+      <FormProvider>
+        <RouterProvider router={router} />
+      </FormProvider>
+    </Provider>
   </StrictMode>,
 );

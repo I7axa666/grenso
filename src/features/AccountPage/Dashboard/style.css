@@ -31,3 +31,13 @@
     padding: 8px 12px;
     font-size: 14px;
 }
+
+@media (max-width: 768px) {
+    .table-container {
+        overflow-x: auto; /* Добавить горизонтальную прокрутку для таблиц */
+    }
+
+    .component-wrapper {
+        flex-direction: column; /* Изменить направление флекс-контейнера на колонку */
+    }
+}

@@ -164,7 +164,7 @@ const HistoricalConsumptionTable: React.FC<HistoricalConsumptionTableProps> = ({
                         {renderHourHeaders()}
                         <th style={{ width: '100px' }} className="text-end">Суточн.<br/>потр.</th>
                         <th style={{ width: '100px' }} className="text-end">Сумм.потр.<br/>в часы СО</th>
-                        <th style={{ width: '105px' }} className="text-end">% потр.<br/>в часы СО</th>
+                        <th style={{ width: '110px' }} className="text-end">% потр.<br/>в часы СО</th>
                     </tr>
                 </thead>
                 <tbody>

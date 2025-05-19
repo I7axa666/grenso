@@ -23,11 +23,11 @@ const AorHeader: React.FC<{ aor: Aor; daysCount: number; days: Day[]; events: Ev
                 const availability = aor.aor_availability.find(a_a => a_a.calendar_day.date === day.date);
                 const aor_event = events.find(ev => String(ev.event_day.date) === day.date);
                 return <DayCell 
-                    key={day.date} 
-                    day={day} 
-                    availability={availability}
-                    aor_event={aor_event}
-                    aor_id={aor.id}
+                key={day.date} 
+                day={day} 
+                availability={availability}
+                aor_event={aor_event}
+                aor_id={aor.id}
                 />;
             })}
             <td className="text-center fw-bold">
@@ -37,4 +37,4 @@ const AorHeader: React.FC<{ aor: Aor; daysCount: number; days: Day[]; events: Ev
     );
 });
 
-export default AorHeader
+export default React.memo(AorHeader)

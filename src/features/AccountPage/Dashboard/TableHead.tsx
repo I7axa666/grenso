@@ -1,3 +1,4 @@
+import React from 'react';
 import { useMemo, useEffect, useRef } from 'react'
 import { Aor, Day } from '../types'
 import { Tooltip } from 'bootstrap';
@@ -87,4 +88,4 @@ const TableHead: React.FC<TableHeadProps> = ({ aors, days }) => {
     );
 };
 
-export default TableHead;
+export default React.memo(TableHead);

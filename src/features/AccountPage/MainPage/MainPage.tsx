@@ -1,28 +1,27 @@
 import React from 'react';
-import './style.css'
+import { useAppSelector, useAppDispatch } from '../../../store/hooks';
+import { setSelectedAor, setSelectedDay, clearModalData, setSelectedOr } from '../../../store/slices/dashboardSlice';
 import DetailConsumption from './DetailConsumption';
+import './style.css';
 
-interface MainPageProps {
-    data: any; // Замените на ваш тип данных
-    onClose: () => void;
-    or_name?: string,
-    aor_name?: string,
-    or_reduction_volume?: number,
-    zone: number
-}
 
-const MainPage: React.FC<MainPageProps> = ({ data, onClose, or_name, aor_name, or_reduction_volume, zone }) => {
+const MainPage: React.FC = () => {
+    const dispatch = useAppDispatch();
+
+    // Для закрытия модального окна
+    const handleCloseModal = () => {
+        dispatch(setSelectedAor(null));
+        dispatch(setSelectedOr(null));
+        dispatch(setSelectedDay(null));
+        dispatch(clearModalData());
+        dispatch(clearModalData());
+    };
+    
     return (
         <div className="mainPageContainer1">
             <div className="mainPage">
-                <button onClick={onClose} className="closeButton">×</button>
-                <DetailConsumption 
-                    data={data} 
-                    or_name={or_name} 
-                    aor_name={aor_name} 
-                    or_reduction_volume={or_reduction_volume} 
-                    zone={zone}
-                />
+                <button onClick={handleCloseModal} className="closeButton">×</button>
+                <DetailConsumption />
             </div>
         </div>
     );
