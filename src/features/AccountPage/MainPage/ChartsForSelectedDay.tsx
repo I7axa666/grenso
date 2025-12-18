@@ -80,6 +80,8 @@ const ChartsForSelectedDay: React.FC = () => {
             });
         }
 
+        console.log(hourlyData)
+        
         return hourlyData;
     };
 
